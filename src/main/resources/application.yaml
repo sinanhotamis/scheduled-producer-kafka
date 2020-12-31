@@ -1,0 +1,16 @@
+spring:
+  quartz:
+    auto-startup: true
+    job-store-type: memory
+    properties:
+      org:
+        quartz:
+          threadPool:
+            threadCount: 10
+
+
+kafka:
+  #bindAddress: kafka-service.event-streaming:9092
+  bindAddress: localhost:9092
+
+
