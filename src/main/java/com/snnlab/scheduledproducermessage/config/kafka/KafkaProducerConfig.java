@@ -1,8 +1,8 @@
-package com.snnlab.scheduledproducerkafka.config;
+package com.snnlab.scheduledproducermessage.config.kafka;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
@@ -17,15 +17,17 @@ import java.util.Map;
 public class KafkaProducerConfig {
 
     @Autowired
-    private KafkaInfo kafkaInfo;
+    private KafkaProperties kafkaProperties;
 
     @Bean
     public ProducerFactory<String,Object> producerFactory(){
         Map<String,Object> configProperties = new HashMap<>();
         //put config elements
-        configProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,this.kafkaInfo.getBindAddress());
-        configProperties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+        configProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,this.kafkaProperties.getBindAddress());
+        configProperties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         configProperties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+        configProperties.put(JsonSerializer.TYPE_MAPPINGS, "paymentInfoDTO:com.snnlab.scheduledproducerkafka.model.PaymentInfoDTO");
+
 
         return new DefaultKafkaProducerFactory<>(configProperties);
     }

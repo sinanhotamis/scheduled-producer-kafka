@@ -1,16 +1,18 @@
 spring:
-  quartz:
-    auto-startup: true
-    job-store-type: memory
-    properties:
-      org:
-        quartz:
-          threadPool:
-            threadCount: 10
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    prop:
+      snnlab:
+        exchange: snnLab-exchange
+        queue: snnLab-queue
+        routingKey: snnLab
 
 
 kafka:
-  #bindAddress: kafka-service.event-streaming:9092
   bindAddress: localhost:9092
+  #bindAddress: localhost:9092
 
 

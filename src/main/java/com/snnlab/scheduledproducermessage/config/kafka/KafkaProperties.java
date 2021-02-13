@@ -1,4 +1,4 @@
-package com.snnlab.scheduledproducerkafka.config;
+package com.snnlab.scheduledproducermessage.config.kafka;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @Setter
 @Configuration
 @ConfigurationProperties(prefix = "kafka")
-public class KafkaInfo {
+public class KafkaProperties {
 
     private String bindAddress;
 }

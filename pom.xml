@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.snnlab</groupId>
-	<artifactId>scheduled-producer-kafka</artifactId>
-	<version>0.0.5-SNAPSHOT</version>
-	<name>scheduled-producer-kafka</name>
-	<description>Demo project for scheduled producer kafka</description>
+	<artifactId>scheduled-producer-message</artifactId>
+	<version>0.0.7-SNAPSHOT</version>
+	<name>scheduled-producer-message</name>
+	<description>Demo project for scheduled producer message into kafka and rabbit mq</description>
 
 	<properties>
 		<java.version>11</java.version>
@@ -40,9 +40,14 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka-test</artifactId>

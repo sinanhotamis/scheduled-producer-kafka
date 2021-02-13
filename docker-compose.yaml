@@ -1,10 +1,12 @@
 version: '2'
 services:
   zookeeper:
+    container_name: snnLab-zookeeper
     image: wurstmeister/zookeeper
     ports:
       - "2181:2181"
   kafka:
+    container_name: snnLab-kafka
     image: wurstmeister/kafka
     ports:
       - "9092:9092"
@@ -14,3 +16,9 @@ services:
       KAFKA_CREATE_TOPICS: "snnLab:1:1"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+  rabbitmq:
+    container_name: snnLab-rabbitmq
+    image: rabbitmq:management
+    ports:
+      - "5672:5672" #JMS Port
+      - "15672:15672"
